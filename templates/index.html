@@ -1,0 +1,132 @@
+{% extends "layout.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<main class="home-hero" id="hero">
+  <div class="home-copy">
+    <div class="eyebrow">Secure documents on-chain</div>
+    <h1>Hash, seal, and verify instantly.</h1>
+    <p class="lead">
+      Vision: seal documents to the blockchain with zero friction and build trust with immutable records.
+    </p>
+    <p class="sub">Tagline: "Seal it, share it, no debate."</p>
+    <div class="cta-row">
+      <form action="/muhurle">
+        <button class="btn neon-btn neon-blue">Get Started</button>
+      </form>
+      <a class="ghost-btn" href="/dogrula">Verify a document</a>
+    </div>
+    <div class="trust-row">
+      <span class="pill">Testnet · Soroban</span>
+      <span class="pill">Freighter-ready</span>
+      <span class="pill">SHA-256 hash & timestamp</span>
+    </div>
+  </div>
+</main>
+
+<section class="section" id="ozellikler">
+  <div class="section-head">
+    <div class="eyebrow">Highlights</div>
+    <h2>Seal and verify from a single place</h2>
+    <p>User-friendly UI, on-chain integrity, and a modern experience.</p>
+  </div>
+  <div class="highlight-grid">
+    <div class="highlight-card">
+      <div class="icon-badge">⚡</div>
+      <h3>Fast sealing</h3>
+      <p>Hash and anchor PDFs, images, or text in seconds.</p>
+    </div>
+    <div class="highlight-card">
+      <div class="icon-badge">🔒</div>
+      <h3>Signer control</h3>
+      <p>Allowed signers and max signer limits set the rules upfront.</p>
+    </div>
+    <div class="highlight-card">
+      <div class="icon-badge">✅</div>
+      <h3>VC-friendly</h3>
+      <p>Verifiable Credential hashes and business IDs for identity workflows.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section protocol" id="protocol">
+  <div class="section-head">
+    <div class="eyebrow">Protocol</div>
+    <h2>Smart contract flow</h2>
+    <p>Share your contract address and process in one glance.</p>
+  </div>
+  <div class="protocol-grid">
+    <div class="protocol-card">
+      <div class="label">Contract Address</div>
+      <div class="code-block">CACQ43FUQT5RKIM5ALUEJ2RD63G6P7VAMN67JZZAXUWXHLAUMPAGHV5T</div>
+      <ul class="proto-list">
+        <li>Document hashes are written on-chain.</li>
+        <li>Signer list and limits kept as metadata.</li>
+        <li>VC hashes stored for verification.</li>
+        <li>Records observable on testnet.</li>
+      </ul>
+    </div>
+    <div class="flow-card">
+      <div class="flow-step">
+        <span>1</span>
+        <div>
+          <h4>Hash & Upload</h4>
+          <p>SHA-256 the document, prepare the payload.</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <span>2</span>
+        <div>
+          <h4>On-chain Seal</h4>
+          <p>Submit to the contract and set allowed signers.</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <span>3</span>
+        <div>
+          <h4>Instant Verify</h4>
+          <p>Query by hash, VC, or signer at any time.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section how" id="nasil-kullanilir">
+  <div class="section-head">
+    <div class="eyebrow">How it works</div>
+    <h2>First seal in 2 minutes</h2>
+    <p>A quick walkthrough of Seal → Verify.</p>
+  </div>
+  <div class="how-grid">
+    <div class="video-placeholder">
+      <div class="play-btn">▶</div>
+      <p>Add a demo video or screen capture.</p>
+    </div>
+    <div class="how-steps">
+      <div class="step">
+        <span>01</span>
+        <div>
+          <h4>Upload your file</h4>
+          <p>Select PDF / image / text, set the document type.</p>
+        </div>
+      </div>
+      <div class="step">
+        <span>02</span>
+        <div>
+          <h4>Set the rules</h4>
+          <p>Fill signer list, limits, and VC content.</p>
+        </div>
+      </div>
+      <div class="step">
+        <span>03</span>
+        <div>
+          <h4>Seal & verify</h4>
+          <p>Seal with one click, verify via /dogrula.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

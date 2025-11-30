@@ -1,0 +1,103 @@
+{% extends "layout.html" %}
+
+{% block title %}Verify Document - Eternity Seal{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='dogrula.css') }}">
+{% endblock %}
+
+{% block content %}
+<section class="page-wrap">
+  <div class="page-head">
+    <div>
+      <div class="eyebrow">Verify</div>
+      <h1>Verify a document on-chain.</h1>
+      <p class="muted">
+        Query by hash, file, signer, metadata, or VC hash and see results instantly.
+      </p>
+    </div>
+    <div class="badge-row">
+      <span class="pill">Testnet · Soroban</span>
+      <span class="pill">Freighter</span>
+      <span class="pill">Secure hashing</span>
+    </div>
+  </div>
+
+  <div class="verify-layout">
+    <div class="verify-card">
+      <div class="seal-header">
+        <div>
+          <h2>Verification mode</h2>
+          <p class="seal-subtitle">Pick a query type that fits your need.</p>
+        </div>
+        <div class="seal-badge">
+          <span class="dot"></span>
+          Read-only request
+        </div>
+      </div>
+
+      <div class="section-grid">
+        <div class="section-card active" data-mode="doc_verify" onclick="setVerifyMode('doc_verify', this)">
+          <div class="section-icon">🔍</div>
+          <h3 class="sc-title">Verify by document</h3>
+          <p class="sc-desc">Verify using hash or file upload.</p>
+        </div>
+
+        <div class="section-card" data-mode="records" onclick="setVerifyMode('records', this)">
+          <div class="section-icon">📑</div>
+          <h3 class="sc-title">List records</h3>
+          <p class="sc-desc">See all seal records for this hash.</p>
+        </div>
+
+        <div class="section-card" data-mode="metadata" onclick="setVerifyMode('metadata', this)">
+          <div class="section-icon">🧭</div>
+          <h3 class="sc-title">Metadata</h3>
+          <p class="sc-desc">Allowed signers and max signers.</p>
+        </div>
+
+        <div class="section-card" data-mode="signer" onclick="setVerifyMode('signer', this)">
+          <div class="section-icon">🪪</div>
+          <h3 class="sc-title">Search by signer</h3>
+          <p class="sc-desc">Find records signed by an address.</p>
+        </div>
+
+        <div class="section-card" data-mode="vc" onclick="setVerifyMode('vc', this)">
+          <div class="section-icon">✅</div>
+          <h3 class="sc-title">VC verification</h3>
+          <p class="sc-desc">Check by VC hash.</p>
+        </div>
+      </div>
+
+      <form id="verifyForm" onsubmit="event.preventDefault(); runVerify();">
+        <input type="hidden" id="verifyMode" value="doc_verify">
+        <div id="dynamicFields" class="dynamic-section"></div>
+
+        <div class="seal-footer">
+          <button type="submit" class="send-btn">
+            <span>Run query</span>
+          </button>
+        </div>
+      </form>
+
+      <div id="verifyResult" class="result-box hidden"></div>
+    </div>
+
+    <div class="side-card">
+      <h3>Tips</h3>
+      <ul class="side-list">
+        <li><span>•</span> If you upload a file, hash is auto-calculated.</li>
+        <li><span>•</span> VC mode hashes the text you provide.</li>
+        <li><span>•</span> Signer mode finds records signed by an address.</li>
+        <li><span>•</span> Records mode lists all seals for a hash.</li>
+      </ul>
+      <div class="side-note">
+        The /verify endpoint is ready; this UI builds the payload for you.
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/dogrula.js') }}"></script>
+{% endblock %}

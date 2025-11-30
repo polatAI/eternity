@@ -1,0 +1,99 @@
+{% extends "layout.html" %}
+
+{% block title %}Seal Document - Eternity Seal{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='muhurle.css') }}">
+{% endblock %}
+
+{% block content %}
+<section class="page-wrap">
+  <div class="page-head">
+    <div>
+      <div class="eyebrow">Seal</div>
+      <h1>Seal your document on-chain.</h1>
+      <p class="muted">
+        Upload your file, choose the type, fill in required fields, and anchor it immutably on the blockchain.
+      </p>
+    </div>
+    <div class="badge-row">
+      <span class="pill">Testnet · Soroban</span>
+      <span class="pill">Freighter</span>
+      <span class="pill">SHA-256</span>
+    </div>
+  </div>
+
+  <div class="seal-layout">
+    <div class="seal-card">
+      <div class="seal-header">
+        <div>
+          <h2>Document details</h2>
+          <p class="seal-subtitle">Attach your file, select the type, and fill dynamic fields.</p>
+        </div>
+        <div class="seal-badge">
+          <span class="dot"></span>
+          Will be written on-chain
+        </div>
+      </div>
+
+      <form id="sealForm" onsubmit="event.preventDefault(); sealDocument();">
+        <div class="seal-grid">
+          <div class="input-group full">
+            <label>Document file</label>
+            <label class="file-drop" for="fileInput">
+              <span class="file-text" id="fileLabel">Choose or drag a file</span>
+            </label>
+            <input id="fileInput" type="file" hidden>
+            <small class="hint">PDF, PNG, JPG, or text. Content will be hashed with SHA-256.</small>
+          </div>
+
+          <div class="input-group">
+            <label>Document type</label>
+            <select id="docType" class="modern-select" onchange="onDocTypeChange()">
+              <option value="certificate">Certificate</option>
+              <option value="diploma">Diploma</option>
+              <option value="transcript">Transcript</option>
+              <option value="vc">VC (Verifiable Credential)</option>
+              <option value="institution_doc">Institution Document</option>
+            </select>
+            <small class="hint" id="docTypeHint">
+              Certificates require student name and VC hash.
+            </small>
+          </div>
+        </div>
+
+        <div id="dynamicFields" class="dynamic-section"></div>
+
+        <div class="seal-footer">
+          <div class="fee-info">
+            <span class="fee-label">Estimated fee</span>
+            <span class="fee-value">~2 XLM</span>
+          </div>
+          <button type="submit" class="send-btn">
+            <span>Seal on-chain</span>
+          </button>
+        </div>
+      </form>
+
+      <div id="sealResult" class="result-box hidden"></div>
+    </div>
+
+    <div class="side-card">
+      <h3>Flow</h3>
+      <ul class="side-list">
+        <li><span>1</span> File is hashed, VC text slice is hashed.</li>
+        <li><span>2</span> Signer list and limits added to payload.</li>
+        <li><span>3</span> Soroban contract writes the record.</li>
+        <li><span>4</span> Query instantly via /dogrula.</li>
+      </ul>
+      <div class="side-note">
+        Business ID, VC hash, and allowed signers set your trust policy up front.
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/muhurle.js') }}"></script>
+{% endblock %}

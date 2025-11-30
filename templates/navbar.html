@@ -1,0 +1,56 @@
+<nav class="navbar">
+  <div class="nav-container">
+    <div class="nav-logo">
+      <a href="{{ url_for('index') }}">
+        <img src="{{ url_for('static', filename='aaa.svg') }}" alt="Eternity Seal logo" class="logo-img" />
+      </a>
+    </div>
+
+    <div class="nav-items-wrapper">
+      <div class="nav-item">
+        <a href="{{ url_for('muhurle') }}" class="nav-link">
+          <span class="nav-text">
+            <span class="nav-text-inner">Seal</span>
+            <span class="nav-text-clone">Seal</span>
+          </span>
+        </a>
+      </div>
+
+      <div class="nav-item">
+        <a href="{{ url_for('dogrula') }}" class="nav-link">
+          <span class="nav-text">
+            <span class="nav-text-inner">Verify</span>
+            <span class="nav-text-clone">Verify</span>
+          </span>
+        </a>
+      </div>
+
+      <div class="nav-item">
+        <a href="#protocol" class="nav-link">
+          <span class="nav-text">
+            <span class="nav-text-inner">Protocol</span>
+            <span class="nav-text-clone">Protocol</span>
+          </span>
+        </a>
+      </div>
+
+      <div class="nav-item">
+        <a href="#" class="nav-link" id="connectWallet">
+          <span class="nav-text">
+            <span class="nav-text-inner">Connect Wallet</span>
+            <span class="nav-text-clone">Connect Wallet</span>
+          </span>
+        </a>
+      </div>
+
+      <div class="nav-item">
+        <a href="https://stellar.expert/explorer/testnet" class="nav-link" target="_blank">
+          <span class="nav-text">
+            <span class="nav-text-inner">Testnet</span>
+            <span class="nav-text-clone">Testnet</span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>

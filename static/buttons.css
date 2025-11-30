@@ -1,0 +1,47 @@
+/* Base Button Style */
+.btn {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    background: transparent;
+    color: #ffffff;
+    min-width: 160px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    outline: none;
+    font-family: inherit;
+}
+
+/* Neon Button Base */
+.neon-btn {
+    background: transparent;
+    border: 2px solid;
+    text-shadow: 0 0 10px currentColor;
+    box-shadow: 
+        inset 0 0 20px rgba(255,255,255,0.1),
+        0 0 20px currentColor;
+    transition: all 0.3s ease;
+}
+
+/* Hover Glow Boost */
+.neon-btn:hover {
+    transform: translateY(-3px);
+    box-shadow:
+        inset 0 0 20px rgba(255,255,255,0.2),
+        0 0 40px currentColor,
+        0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* Blue Glow Color */
+.neon-blue {
+    color: #3d6aff;
+    border-color: #3d6aff;
+}
