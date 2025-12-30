@@ -1,0 +1,91 @@
+﻿{% extends "layout.html" %}
+
+{% block title %}Doğrula - Eternity Seal{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='dogrula.css') }}">
+{% endblock %}
+
+{% block content %}
+<section class="page-wrap">
+  <div class="page-head">
+    <div>
+      <div class="eyebrow">Doğrula</div>
+      <h1>İmzalı belgeni doğrula.</h1>
+      <p class="muted">
+        Bir belgeyi hash ile veya imzalayan adresiyle arayın. Tüm detayları anında görün.
+      </p>
+    </div>
+    <div class="badge-row">
+      <span class="pill">Freighter</span>
+      <span class="pill">SHA-256</span>
+      <span class="pill">Güvenli</span>
+    </div>
+  </div>
+
+  <div class="verify-layout">
+    <div class="verify-card">
+      <div class="seal-header">
+        <div>
+          <h2>Doğrulama modu</h2>
+          <p class="seal-subtitle">Sertifikaları nasıl aramak istediğini seç.</p>
+        </div>
+        <div class="seal-badge">
+          <span class="dot"></span>
+          Salt okunur sorgu
+        </div>
+      </div>
+
+      <div class="section-grid">
+        <div class="section-card active" data-mode="by_hash" onclick="setVerifyMode('by_hash', this)">
+          <div class="section-icon">01</div>
+          <h3 class="sc-title">Hash ile doğrula</h3>
+          <p class="sc-desc">Dosya yükle veya hash gir.</p>
+        </div>
+
+        <div class="section-card" data-mode="by_signer" onclick="setVerifyMode('by_signer', this)">
+          <div class="section-icon">02</div>
+          <h3 class="sc-title">İmzalayan ile ara</h3>
+          <p class="sc-desc">Bir adrese ait tüm kayıtları bul.</p>
+        </div>
+      </div>
+
+      <form id="verifyForm" onsubmit="event.preventDefault(); runVerify();">
+        <input type="hidden" id="verifyMode" value="by_hash">
+        <div id="dynamicFields" class="dynamic-section"></div>
+
+        <div class="seal-footer">
+          <button type="submit" class="send-btn">
+            <span>Belgeyi doğrula</span>
+          </button>
+        </div>
+      </form>
+
+      <div id="verifyResult" class="result-box hidden"></div>
+    </div>
+
+    <div class="side-card">
+      <h3>Nasıl Çalışır</h3>
+      <ul class="side-list">
+        <li><span>1</span> Dosyanı yükle veya SHA-256 hash gir</li>
+        <li><span>2</span> Sistem zincir üstü kayıtları sorgular</li>
+        <li><span>3</span> Metaveri ve zaman damgasını görüntüle</li>
+        <li><span>4</span> Gerekirse Freighter ile doğrula</li>
+      </ul>
+      <div class="side-note">
+        Tüm belgeler kriptografik olarak imzalanır ve zaman damgalıdır.
+      </div>
+      <div class="side-note network-note">
+        <strong>Zincir üstü bilgiler</strong>
+        <div>Ağ: Testnet</div>
+        <div>Sözleşme: <code id="contractId">Yükleniyor...</code></div>
+        <div>RPC: <span id="rpcUrl">Yükleniyor...</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/dogrula.js') }}"></script>
+{% endblock %}

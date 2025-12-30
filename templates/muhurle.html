@@ -1,0 +1,115 @@
+﻿{% extends "layout.html" %}
+
+{% block title %}Mühürle - Eternity Seal{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='muhurle.css') }}">
+{% endblock %}
+
+{% block content %}
+<section class="page-wrap">
+  <div class="page-head">
+    <div>
+      <div class="eyebrow">Mühürle</div>
+      <h1>Belgeni imzala ve mühürle.</h1>
+      <p class="muted">
+        Belgeni yükle, Freighter cüzdanıyla imzala ve zincire güvenli biçimde mühürle.
+      </p>
+    </div>
+    <div class="badge-row">
+      <span class="pill">Freighter Cüzdan</span>
+      <span class="pill">SHA-256</span>
+      <span class="pill">Kriptografik İmza</span>
+    </div>
+  </div>
+
+  <div class="seal-layout">
+    <div class="seal-card">
+      <div class="seal-header">
+        <div>
+          <h2>Belge ayrıntıları</h2>
+          <p class="seal-subtitle">Dosyanı yükle ve metaveri ekle.</p>
+        </div>
+        <div class="seal-badge">
+          <span class="dot"></span>
+          Freighter imzalı
+        </div>
+      </div>
+
+      <form id="sealForm" onsubmit="event.preventDefault(); sealDocument();">
+        <div class="seal-grid">
+          <div class="input-group full">
+            <label>Belge dosyası</label>
+            <label class="file-drop" for="fileInput">
+              <span class="file-text" id="fileLabel">Bir dosya seç veya sürükle</span>
+            </label>
+            <input id="fileInput" type="file" hidden>
+            <small class="hint">PDF, PNG, JPG veya metin dosyası. SHA-256 ile hashlenir.</small>
+          </div>
+
+          <div class="input-group">
+            <label>Belge tipi</label>
+            <select id="docType" class="modern-select">
+              <option value="certificate">Sertifika</option>
+              <option value="diploma">Diploma</option>
+              <option value="transcript">Transkript</option>
+              <option value="credential">Yeterlilik</option>
+            </select>
+          </div>
+
+          <div class="input-group">
+            <label>Öğrenci / Alıcı adı</label>
+            <input id="studentName" type="text" placeholder="Örn. Ahmet Yılmaz">
+          </div>
+
+          <div class="input-group">
+            <label>Kurum / İşletme ID</label>
+            <input id="businessId" type="text" placeholder="Örn. university-seal-001">
+          </div>
+
+          <div class="input-group full">
+            <label>Ek notlar (isteğe bağlı)</label>
+            <textarea id="vcInput" placeholder="Ek metaveri, JSON ya da not..."></textarea>
+          </div>
+        </div>
+
+        <div class="seal-footer">
+          <div class="fee-info">
+            <span class="fee-label">Yöntem</span>
+            <span class="fee-value">Freighter İmzası</span>
+          </div>
+          <button type="submit" class="send-btn">
+            <span>İmzala ve mühürle</span>
+          </button>
+        </div>
+      </form>
+
+      <div id="sealResult" class="result-box hidden"></div>
+    </div>
+
+    <div class="side-card">
+      <h3>Süreç</h3>
+      <ul class="side-list">
+        <li><span>1</span> Dosyanı yükle (PDF, görsel, metin)</li>
+        <li><span>2</span> Belge metaverilerini ekle</li>
+        <li><span>3</span> "İmzala ve mühürle" tıkla</li>
+        <li><span>4</span> Freighter üzerinden onay ver</li>
+        <li><span>5</span> Belge zincire mühürlenir</li>
+      </ul>
+      <div class="side-note">
+        Belgen, Freighter adresinle imzalanır ve zaman damgası eklenir.
+      </div>
+      <div class="side-note network-note">
+        <strong>Zincir üstü bilgiler</strong>
+        <div>Ağ: Testnet</div>
+        <div>Sözleşme: <code id="contractId">Yükleniyor...</code></div>
+        <div>RPC: <span id="rpcUrl">Yükleniyor...</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/muhurle.js') }}"></script>
+{% endblock %}

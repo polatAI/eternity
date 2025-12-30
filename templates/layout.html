@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Eternity Seal{% endblock %}</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='buttons.css') }}">
+    {% block extra_css %}{% endblock %}
+
+    <svg class="sr-only">
+        <filter id="spotlight">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="3" result="blur"></feGaussianBlur>
+            <feSpecularLighting result="lighting" in="blur" surfaceScale="5" specularConstant="0.5"
+                specularExponent="120" lighting-color="#ffffff">
+                <fePointLight x="50" y="50" z="300"></fePointLight>
+            </feSpecularLighting>
+            <feComposite in="lighting" in2="SourceAlpha" operator="in" result="composite"></feComposite>
+            <feComposite in="SourceGraphic" in2="composite" operator="arithmetic" k1="0" k2="1" k3="1" k4="0"
+                result="litPaint"></feComposite>
+        </filter>
+        <filter id="ambience">
+            <feGaussianBlur in="SourceAlpha" stdDeviation="3" result="blur"></feGaussianBlur>
+            <feSpecularLighting result="lighting" in="blur" surfaceScale="5" specularConstant="0.5"
+                specularExponent="120" lighting-color="#ffffff">
+                <fePointLight x="50" y="50" z="300"></fePointLight>
+            </feSpecularLighting>
+            <feComposite in="lighting" in2="SourceAlpha" operator="in" result="composite"></feComposite>
+            <feComposite in="SourceGraphic" in2="composite" operator="arithmetic" k1="0" k2="1" k3="1" k4="0"
+                result="litPaint"></feComposite>
+        </filter>
+    </svg>
+</head>
+
+<body>
+    <div class="hero-section">
+        {% include 'navbar.html' %}
+        {% block content %}{% endblock %}
+    </div>
+
+    <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stellar-freighter-api/5.0.0/index.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@stellar/stellar-sdk@14.4.3/dist/stellar-sdk.min.js"></script>
+    <script src="{{ url_for('static', filename='js/soroban.js') }}?v=1443"></script>
+    <script src="{{ url_for('static', filename='script.js') }}?v=3"></script>
+    {% block extra_js %}{% endblock %}
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div>
+                <div class="footer-logo">Eternity Seal</div>
+                <p class="footer-copy">
+                    Belgeleri zincire hashleyip mühürlemenin hızlı ve güvenli yolu.
+                </p>
+            </div>
+            <div class="footer-links">
+                <a href="{{ url_for('index') }}">Ana Sayfa</a>
+                <a href="{{ url_for('muhurle') }}">Mühürle</a>
+                <a href="{{ url_for('dogrula') }}">Doğrula</a>
+                <a href="#protocol">Akış</a>
+            </div>
+            <div class="footer-meta">
+                <span>Testnet · Soroban</span>
+                <span>Freighter hazır</span>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>

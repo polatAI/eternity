@@ -1,0 +1,175 @@
+﻿{% extends "layout.html" %}
+
+{% block title %}Ana Sayfa{% endblock %}
+
+{% block content %}
+<main class="home-hero" id="hero">
+  <div class="home-copy">
+    <div class="eyebrow">Zincir Üstü Güven</div>
+    <h1>Hashle, mühürle, doğrula.</h1>
+    <p class="lead">
+      Belgeleri sıfır sürtünmeyle zincire mühürle, değiştirilemez kayıtlarla güveni kalıcı kıl.
+    </p>
+    <p class="sub">Slogan: "Mühürle, paylaş, tartışmasız."</p>
+    <div class="cta-row">
+      <form action="/muhurle">
+        <button class="btn neon-btn neon-blue">Hemen Başla</button>
+      </form>
+      <a class="ghost-btn" href="/dogrula">Belge Doğrula</a>
+    </div>
+    <div class="trust-row">
+      <span class="pill">Testnet · Soroban</span>
+      <span class="pill">Freighter hazır</span>
+      <span class="pill">SHA-256 hash & zaman damgası</span>
+    </div>
+  </div>
+  <div class="hero-panel">
+    <div class="panel-card panel-glow">
+      <div class="panel-top">
+        <span class="panel-pill">CANLI AKIŞ</span>
+        <span class="panel-status"><span class="status-dot"></span>Senkron</span>
+      </div>
+      <div class="panel-title">Zincir üstü mühürleme konsolu</div>
+      <div class="panel-meta">
+        <div class="meta-item">
+          <span class="meta-label">Sözleşme</span>
+          <span class="meta-value code">CA2TXD7...B3EZ</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Ağ</span>
+          <span class="meta-value">Testnet / Soroban</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Akış</span>
+          <span class="meta-value">Hash → Mühür → Doğrula</span>
+        </div>
+      </div>
+      <div class="signal-grid">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+    <div class="panel-card panel-mini">
+      <div class="mini-title">Metaveri Alanları</div>
+      <div class="mini-list">
+        <span>Belge tipi</span>
+        <span>Öğrenci adı</span>
+        <span>Kurum ID</span>
+        <span>Ek notlar</span>
+      </div>
+      <div class="mini-foot">Zaman damgası otomatik eklenir.</div>
+    </div>
+  </div>
+</main>
+
+<section class="section" id="ozellikler">
+  <div class="section-head">
+    <div class="eyebrow">Öne Çıkanlar</div>
+    <h2>Tek noktadan mühürle ve doğrula</h2>
+    <p>Kullanışlı arayüz, zincir üstü bütünlük ve modern deneyim.</p>
+  </div>
+  <div class="highlight-grid">
+    <div class="highlight-card">
+      <div class="icon-badge">01</div>
+      <h3>Hızlı mühürleme</h3>
+      <p>PDF, görüntü veya metni saniyeler içinde hashleyip zincire işler.</p>
+    </div>
+    <div class="highlight-card">
+      <div class="icon-badge">02</div>
+      <h3>Net metaveri</h3>
+      <p>Belge tipi, öğrenci adı, kurum ID ve notlar zincire yazılır.</p>
+    </div>
+    <div class="highlight-card">
+      <div class="icon-badge">03</div>
+      <h3>Şeffaf doğrulama</h3>
+      <p>Hash ile anında doğrula, kayıtları testnette görüntüle.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section protocol" id="protocol">
+  <div class="section-head">
+    <div class="eyebrow">Protokol</div>
+    <h2>Akıllı kontrat akışı</h2>
+    <p>Sözleşme adresini ve süreç özetini tek bakışta paylaş.</p>
+  </div>
+  <div class="protocol-grid">
+    <div class="protocol-card">
+      <div class="label">Sözleşme Adresi</div>
+      <div class="code-block">CA2TXD7QNQHYBCRRJ6UDW4RDINTSQIMP5BMIOJWYZTRSGQATLVWTB3EZ</div>
+      <ul class="proto-list">
+        <li>Belge hashleri zincire yazılır.</li>
+        <li>Belge tipi, öğrenci adı, kurum ID ve notlar saklanır.</li>
+        <li>Zaman damgası otomatik eklenir.</li>
+        <li>Kayıtlar testnet üzerinden görüntülenir.</li>
+      </ul>
+    </div>
+    <div class="flow-card">
+      <div class="flow-step">
+        <span>1</span>
+        <div>
+          <h4>Hash & Metaveri</h4>
+          <p>Belgeyi SHA-256 ile hashle, metaveriyi hazırla.</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <span>2</span>
+        <div>
+          <h4>Zincire Mühürle</h4>
+          <p>İşlemi sözleşmeye gönder, kayıt zincire yazılsın.</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <span>3</span>
+        <div>
+          <h4>Anında Doğrula</h4>
+          <p>Hash ile sorgula, kayıtları her an görüntüle.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section how" id="nasil-kullanilir">
+  <div class="section-head">
+    <div class="eyebrow">Nasıl Çalışır</div>
+    <h2>2 dakikada ilk mühür</h2>
+    <p>Mühürle → Doğrula için hızlı bir tur.</p>
+  </div>
+  <div class="how-grid">
+    <a class="video-placeholder video-link" href="{{ url_for('video') }}">
+      <video class="video-thumb" muted loop playsinline>
+        <source src="{{ url_for('static', filename='videos/demo.mp4') }}" type="video/mp4">
+      </video>
+      <div class="play-overlay">
+        <div class="play-btn">▶</div>
+        <p>Demo videoyu izle</p>
+      </div>
+    </a>
+    <div class="how-steps">
+      <div class="step">
+        <span>01</span>
+        <div>
+          <h4>Dosyayı yükle</h4>
+          <p>PDF / görüntü / metin seç, belge tipini belirle.</p>
+        </div>
+      </div>
+      <div class="step">
+        <span>02</span>
+        <div>
+          <h4>Metaveriyi doldur</h4>
+          <p>Öğrenci adı, kurum ID ve notlarını ekle.</p>
+        </div>
+      </div>
+      <div class="step">
+        <span>03</span>
+        <div>
+          <h4>Mühürle & doğrula</h4>
+          <p>Tek tıkla mühürle, /dogrula ile doğrula.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
